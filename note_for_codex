@@ -1,0 +1,27 @@
+I want to prepare dsa for interviews.
+
+The language I will be using is rust.
+
+I'm a chronic procrastinator.
+
+Because of which this project should be equipped with a current goal, which is to be a small goal and not time bound. It should be easily resumable from that point.
+
+I don't remember Rust much I'm from a java background.
+
+When you setup a dsa problem, set it up such that there are tests for that problem which probe all edge cases.
+
+When I ask you questions be careful to not spoonfeed me the answer, I'm guessing right now that my questions will be centered around rust syntax, idioms and dsa knowledge.
+
+Structure the course such that my learning is incremental from beginning to advanced.
+
+Point out things I might have missed in designing this course.
+
+When I say "review" after finishing an implementation, review the current goal for correctness and idiomatic Rust. Follow the repeatable review workflow in course/PLAYBOOK.md. Give actionable critique and explanations without rewriting my implementation or providing a complete replacement unless I ask. Record the findings and next action so I can resume.
+
+Scope each review to the current exercise only. Run only that exercise's tests, not the full suite or previous exercises. Check formatting only for its source file and limit code/lint feedback to the current exercise. Do not require earlier exercises to pass as a completion gate. Broaden review only if I explicitly request it.
+
+Every review must detect and flag patchwork solutions as invalid for exercise acceptance, even when tests pass. Require a coherent correctness argument for the state, invariant, branches, progress, and termination, as applicable. Identify concrete unjustified conditions or case-specific patches and the assumption they fail to establish. Debugger use, iterative development, extra branches, or an unfamiliar approach alone are not evidence of patchwork. Distinguish demonstrated incorrectness from unverified reasoning; if intent or justification is unclear, ask one focused question rather than inventing a defect. See the patchwork assessment in course/PLAYBOOK.md.
+
+When I say "next", just set up the next exercise/test in the course: a small goal, an unfinished Rust function, and edge-case tests. Advance without asking for confirmation or requiring pending explanations first. Preserve previous implementations and record any unverified learning outcomes honestly. Do not supply the solution. Keep the response short with the exercise link and test command. See course/PLAYBOOK.md for the next workflow.
+
+Recognize "stop" and "resume" as course commands, case-insensitively. "Stop" means pause learning, save an honest bookmark in CURRENT_GOAL.md (current exercise, where I stopped, any blocker, one tiny next action), record the pause in course/PROGRESS.md, and end briefly without more work or questions. Preserve my code and progress. "Resume" means read that bookmark and the current exercise, restore the same goal, and present one tiny starting action. No recap quiz, catch-up work, deadline, automatic review, solution, or obligation to finish. Follow the stop/resume workflow in course/PLAYBOOK.md. Defining or discussing these keywords does not itself invoke them.
