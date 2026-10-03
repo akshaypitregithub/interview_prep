@@ -8,8 +8,40 @@
 /// O(1) auxiliary space. No linear scan, sorting, recursion, built-in
 /// search/partition helpers, or calls to earlier exercises.
 pub fn rotated_search(nums: &[i32], target: i32) -> Option<usize> {
-    let _ = (nums, target);
-    todo!("Implement G020")
+    let mut left_ptr = 0;
+    let mut right_ptr = nums.len() - 1;
+    while left_ptr < right_ptr {
+        let mid_point = left_ptr + (right_ptr - left_ptr)/2;
+        let mut is_left_sorted = false;
+        if nums[mid_point] == target {
+             return Some(mid_point)
+        }
+        if nums[mid_point] > nums[left_ptr] {
+            is_left_sorted = true;
+        }
+        if is_left_sorted {
+            if nums[mid_point] > target {
+                if nums[left_ptr] < target {
+                    right_ptr = mid_point - 1;
+                } else {
+                    left_ptr = mid_point + 1;
+                }
+            } else {
+                left_ptr = mid_point + 1;
+            }
+        } else {
+            if nums[mid_point] < target {
+                if nums[right_ptr] > target {
+                    left_ptr = mid_point + 1;
+                } else {
+                    right_ptr = mid_point - 1;
+                }
+            } else {
+                right_ptr = mid_point - 1;
+            }
+        }
+    }
+    None
 }
 
 #[cfg(test)]
