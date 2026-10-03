@@ -17,13 +17,15 @@ On 2026-09-05, `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`,
 
 ## Active goal
 
-**Session active.** Advanced to G019 (lower bound) on 2026-09-10 at explicit next request. All 17 tests compile and fail at the intentional placeholder; 256 earlier tests filtered out. New file formatted; standalone Clippy passes. Next tiny action: read `duplicates_in_middle_return_first` in `src/exercises/lower_bound.rs`. Earlier implementations preserved.
+**Session active.** Advanced to G020 (rotated search, distinct values) on 2026-09-21 at explicit next request. All 17 tests compile and fail at the intentional placeholder; 273 earlier tests filtered out. New file formatting and standalone Clippy pass. Next tiny action: read `finds_targets_on_both_sides_of_rotation` in `src/exercises/rotated_search.rs`. Earlier code and tests preserved.
+
+G019 advancement evidence: last review passed all 17 tests and standalone Clippy, with no correctness defect or demonstrated patchwork. Formatting cleanup now observed but not rechecked. Coach supplied the invariant and branch justification after learner clarified their answer was a guess. Independent correctness/progress/complexity reasoning remains unverified. See [review](reviews/G019.md).
 
 G018 advancement evidence: last review passed all 16 tests with no correctness defect or demonstrated patchwork. The coach subsequently supplied the inclusive-midpoint progress explanation; independent invariant/complexity reasoning remains unverified. Removal of `mut` and formatting cleanup observed on advancement but not rechecked. See [review](reviews/G018.md).
 
 | ID | Unit | Deliverable | Status |
 | --- | --- | --- | --- |
-| G019 | Lower bound | First position with value at least target | Unsolved scaffold; 17 tests |
+| G020 | Rotated search | Target index in a rotated distinct sorted slice | Unsolved scaffold; 17 tests |
 
 Setup evidence (not rerun on resume): only G006's 13 tests ran; each failed at the intentional placeholder, with 62 earlier tests filtered out. G006 file formatting and standalone Clippy passed. Previous implementations were preserved. The checkpoint paragraphs below are historical.
 

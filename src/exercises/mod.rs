@@ -15,5 +15,6 @@ pub mod merge_sorted;
 pub mod ordered_intersection;
 pub mod parse_integer;
 pub mod reverse_in_place;
+pub mod rotated_search;
 pub mod running_totals;
 pub mod two_sum;

@@ -8,14 +8,34 @@
 /// and O(1) auxiliary space. No search/partition helpers, linear scan, sorting,
 /// recursion, or calls to earlier exercises.
 pub fn lower_bound(nums: &[i32], target: i32) -> usize {
+    if nums.is_empty() {
+        return nums.len();
+    }
     let mut left_ptr = 0;
     let mut right_ptr = nums.len() - 1;
 
     loop {
-        let mid_index = left_ptr + (right_ptr - left_ptr)/2;
+        let mid_index = left_ptr + (right_ptr - left_ptr) / 2;
 
+        let mid_num = nums[mid_index];
 
+        if right_ptr - left_ptr <= 1 {
+            if nums[left_ptr] >= target {
+                return left_ptr;
+            }
+            if nums[right_ptr] < target {
+                return nums.len();
+            }
+            if nums[left_ptr] < target && nums[right_ptr] >= target {
+                return right_ptr;
+            }
+        }
 
+        if target <= mid_num {
+            right_ptr = mid_index;
+        } else {
+            left_ptr = mid_index;
+        }
     }
 }
 
