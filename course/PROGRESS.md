@@ -17,7 +17,9 @@ On 2026-09-05, `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`,
 
 ## Active goal
 
-**Session active.** Advanced to G021 integer square root on explicit next request (2026-10-04). All 13 new tests compile and fail at the intentional placeholder; 290 earlier tests filtered out. New-file formatting and standalone Clippy pass. Next tiny action: read `rounds_down_between_squares` in `src/exercises/integer_sqrt.rs`. Earlier implementations and tests preserved.
+**Session active.** Advanced to G022 minimum shipping capacity on explicit next request (2026-10-04). All 15 new tests compile and fail at the intentional placeholder; 303 earlier tests filtered out. New-file formatting and standalone Clippy pass. Next tiny action: read `finds_minimum_for_multiple_days` in `src/exercises/shipping_capacity.rs`. Earlier implementations and tests preserved.
+
+G021 advancement evidence: last review passed all 13 tests, file formatting, and standalone Clippy. No correctness defect or demonstrated patchwork found. Learner justified rejecting an overflowing midpoint using the u64 bound on n; the argument for rejecting all larger candidates and other independent reasoning remain pending. Coach clarified the mathematical-square interpretation and asked how the square changes as the nonnegative candidate increases; that follow-up remains unanswered. No G021 checks rerun during advancement. See [review](reviews/G021.md).
 
 G020 advancement evidence: last review passed 17/17 tests; formatting and two question_mark Clippy warnings remained. No correctness defect or demonstrated patchwork found. Learner correctly described selecting by a sorted half's range, but confused midpoint-index equality with the value-equality early return. Coach clarified the distinction and supplied a [5, 2], target 2 trace prompt; follow-up remains unanswered. Independent full correctness, progress, safety, and complexity reasoning remains unverified. See [review](reviews/G020.md).
 
@@ -27,7 +29,7 @@ G018 advancement evidence: last review passed all 16 tests with no correctness d
 
 | ID | Unit | Deliverable | Status |
 | --- | --- | --- | --- |
-| G021 | Integer square root | Floor square root across the u64 range | Unsolved scaffold; 13 tests |
+| G022 | Minimum shipping capacity | Smallest capacity to ship in order within a day limit | Unsolved scaffold; 15 tests |
 
 Setup evidence (not rerun on resume): only G006's 13 tests ran; each failed at the intentional placeholder, with 62 earlier tests filtered out. G006 file formatting and standalone Clippy passed. Previous implementations were preserved. The checkpoint paragraphs below are historical.
 

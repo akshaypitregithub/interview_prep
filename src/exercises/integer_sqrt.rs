@@ -7,8 +7,32 @@
 /// scan, wider integer types, or calls to earlier exercises in the implementation.
 /// Checked integer arithmetic is allowed. Tests may use u128 as an oracle.
 pub fn integer_sqrt(n: u64) -> u64 {
-    let _ = n;
-    todo!("Implement integer square root")
+    if n == 0 {
+        return 0;
+    }
+
+    let mut left = 1;
+    let mut right = n;
+    let mut res = 1;
+
+    while right >= left {
+        let mid = left + (right - left) / 2;
+
+        let checked_square = mid.checked_mul(mid);
+
+        if let Some(square) = checked_square {
+            if square <= n {
+                left = mid + 1;
+                res = mid;
+            } else {
+                right = mid - 1;
+            }
+        } else {
+            right = mid - 1;
+        }
+    }
+
+    res
 }
 
 #[cfg(test)]
