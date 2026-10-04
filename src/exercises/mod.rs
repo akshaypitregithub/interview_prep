@@ -6,6 +6,7 @@ pub mod count_occurrences;
 pub mod dedup_sorted;
 pub mod first_index;
 pub mod first_unique_char;
+pub mod integer_sqrt;
 pub mod longest_consecutive;
 pub mod longest_unique_substring;
 pub mod lower_bound;

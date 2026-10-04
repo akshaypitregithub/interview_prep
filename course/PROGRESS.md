@@ -17,7 +17,9 @@ On 2026-09-05, `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`,
 
 ## Active goal
 
-**Session active.** Advanced to G020 (rotated search, distinct values) on 2026-09-21 at explicit next request. All 17 tests compile and fail at the intentional placeholder; 273 earlier tests filtered out. New file formatting and standalone Clippy pass. Next tiny action: read `finds_targets_on_both_sides_of_rotation` in `src/exercises/rotated_search.rs`. Earlier code and tests preserved.
+**Session active.** Advanced to G021 integer square root on explicit next request (2026-10-04). All 13 new tests compile and fail at the intentional placeholder; 290 earlier tests filtered out. New-file formatting and standalone Clippy pass. Next tiny action: read `rounds_down_between_squares` in `src/exercises/integer_sqrt.rs`. Earlier implementations and tests preserved.
+
+G020 advancement evidence: last review passed 17/17 tests; formatting and two question_mark Clippy warnings remained. No correctness defect or demonstrated patchwork found. Learner correctly described selecting by a sorted half's range, but confused midpoint-index equality with the value-equality early return. Coach clarified the distinction and supplied a [5, 2], target 2 trace prompt; follow-up remains unanswered. Independent full correctness, progress, safety, and complexity reasoning remains unverified. See [review](reviews/G020.md).
 
 G019 advancement evidence: last review passed all 17 tests and standalone Clippy, with no correctness defect or demonstrated patchwork. Formatting cleanup now observed but not rechecked. Coach supplied the invariant and branch justification after learner clarified their answer was a guess. Independent correctness/progress/complexity reasoning remains unverified. See [review](reviews/G019.md).
 
@@ -25,7 +27,7 @@ G018 advancement evidence: last review passed all 16 tests with no correctness d
 
 | ID | Unit | Deliverable | Status |
 | --- | --- | --- | --- |
-| G020 | Rotated search | Target index in a rotated distinct sorted slice | Unsolved scaffold; 17 tests |
+| G021 | Integer square root | Floor square root across the u64 range | Unsolved scaffold; 13 tests |
 
 Setup evidence (not rerun on resume): only G006's 13 tests ran; each failed at the intentional placeholder, with 62 earlier tests filtered out. G006 file formatting and standalone Clippy passed. Previous implementations were preserved. The checkpoint paragraphs below are historical.
 
@@ -105,6 +107,10 @@ Revisit earlier topics after intervening exercises, without blocking explicit `n
 No mocks attempted. Record prompt, novelty, environment/tool rules, hints, per-dimension scores from the [playbook](PLAYBOOK.md), concrete evidence, and the next repair goal. Keep learning completion and mock readiness separate.
 
 ## Resume rule
+
+### 2026-10-03 — G020 resumed
+
+Session active; continuing rotated sorted search. An implementation attempt is present and preserved; no review or checks run on resume. No blocker recorded. Next tiny action: read `finds_targets_on_both_sides_of_rotation` in `src/exercises/rotated_search.rs`.
 
 ### 2026-09-09 — G018 resumed
 

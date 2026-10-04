@@ -1,53 +1,54 @@
-# Current Goal
+﻿# Current Goal
 
-## G020 - Search rotated sorted input
+## G021 - Integer square root
 
 **Status:** Ready to start; intentionally unfinished.
 **Session:** Active.
-**Course position:** Binary search and boundaries.
-**Goal:** Implement `rotated_search(nums: &[i32], target: i32) -> Option<usize>`. No deadline.
+**Course position:** Binary search and safe arithmetic.
+**Goal:** Implement `integer_sqrt(n: u64) -> u64`. No deadline.
 
 ## Next action
 
-Read `finds_targets_on_both_sides_of_rotation` in [the exercise](src/exercises/rotated_search.rs), then make an attempt when ready.
+Read `rounds_down_between_squares` in [the exercise](src/exercises/integer_sqrt.rs), then make an attempt when ready.
 
 ```powershell
-cargo test --lib exercises::rotated_search::
+cargo test --lib exercises::integer_sqrt::
 ```
 
 ## Contract
 
-- Input is a rotation of a strictly increasing sequence; all values are distinct. Empty and unrotated inputs are valid. Do not validate or sort it.
-- A rotation moves a prefix to the end without changing order: `[2, 4, 6, 8, 10]` can become `[8, 10, 2, 4, 6]`.
-- Return `Some(index)` for a present target, otherwise `None`. Indices are relative to the supplied slice.
-- Preserve the borrowed slice and support every i32 value and target.
-- Use safe Rust and explicit loops. No linear scan, sorting, recursion, built-in search/partition helpers, or calls to earlier exercises.
-- Aim for O(log n) time for nonempty input and O(1) auxiliary space.
+- Return the greatest integer r whose mathematical square is at most n (floor of the square root).
+- Support every u64 input, including zero and u64::MAX, without overflow or panic.
+- Use safe Rust and explicit loops; aim for O(log(n + 1)) time and O(1) auxiliary space.
+- No floating point, built-in square-root/search helpers, recursion, linear scan, wider integer types, or calls to earlier exercises in the implementation. Checked integer arithmetic is allowed.
+- Tests use u128 only to check mathematical results independently.
 
-| Input / target | Result |
+| Input | Result |
 | --- | --- |
-| `[8, 10, 2, 4, 6]` / 2 | `Some(2)` |
-| `[8, 10, 2, 4, 6]` / 9 | `None` |
-| `[2, 4, 6]` / 6 | `Some(2)` |
-| `[]` / 7 | `None` |
+| 0 | 0 |
+| 1 | 1 |
+| 8 | 2 |
+| 9 | 3 |
+| 15 | 3 |
+| u64::MAX | 4294967295 |
 
 ## Review criteria
 
-- [ ] All 17 current tests pass.
-- [ ] `rustfmt --edition 2024 --check src/exercises/rotated_search.rs` passes on the implementation.
-- [ ] `clippy-driver --edition=2024 --test src/exercises/rotated_search.rs --crate-name g020_review --emit=metadata --out-dir target -D warnings` passes on the implementation.
-- [ ] Explain the candidate invariant, branch decisions, strict progress and termination without case-specific patches.
-- [ ] Explain index safety and time/auxiliary-space complexity.
+- [ ] All 13 current tests pass.
+- [ ] `rustfmt --edition 2024 --check src/exercises/integer_sqrt.rs` passes.
+- [ ] `clippy-driver --edition=2024 --test src/exercises/integer_sqrt.rs --crate-name g021_review --emit=metadata --out-dir target -D warnings` passes.
+- [ ] Explain state, invariant, branch decisions, progress, and termination without case-specific patches.
+- [ ] Explain arithmetic safety and time/auxiliary-space complexity.
 
 ## Resume notes
 
-- Last completed action (2026-09-21): G020 stub and 17 edge-case tests created. All compile and fail at the intentional placeholder; 273 earlier tests filtered out. New file formatting and standalone Clippy pass.
+- Last completed action (2026-10-04): Created G021 stub and 13 edge-case tests on explicit next request. All compile and fail at the intentional placeholder; 290 earlier tests filtered out. New-file formatting and standalone Clippy pass.
 - Current blocker: None recorded; implementation intentionally unfinished.
-- Next tiny action: Read `finds_targets_on_both_sides_of_rotation`.
-- Prior learning: G019 last review passed all 17 tests and Clippy. Formatting cleanup now observed but not rechecked. Coach supplied the precise candidate invariant and branch justification after the learner said their answer was a guess; independent reasoning remains unverified. See [review](course/reviews/G019.md). Earlier code preserved.
+- Next tiny action: Read `rounds_down_between_squares`.
+- Prior learning: G020 last review passed 17/17 tests; formatting and two question_mark Clippy warnings remained. No correctness defect or demonstrated patchwork found. Learner described sorted-half selection correctly but confused midpoint-index equality with the value-equality return; coach supplied the distinction and a [5, 2], target 2 trace prompt. Follow-up and independent full reasoning remain unverified. Previous code and tests preserved. See [review](course/reviews/G020.md).
 
 Say **review**, **next**, **stop**, or **resume**.
 
 ## Following exercise
 
-Next: integer square root with safe arithmetic. Scaffold only on request.
+Next: minimum feasible shipping capacity. Scaffold only on request.

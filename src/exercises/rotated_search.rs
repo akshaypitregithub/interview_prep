@@ -8,36 +8,41 @@
 /// O(1) auxiliary space. No linear scan, sorting, recursion, built-in
 /// search/partition helpers, or calls to earlier exercises.
 pub fn rotated_search(nums: &[i32], target: i32) -> Option<usize> {
+    if nums.is_empty() {
+        return None;
+    }
     let mut left_ptr = 0;
     let mut right_ptr = nums.len() - 1;
-    while left_ptr < right_ptr {
-        let mid_point = left_ptr + (right_ptr - left_ptr)/2;
-        let mut is_left_sorted = false;
+    while left_ptr <= right_ptr {
+        let mid_point = left_ptr + (right_ptr - left_ptr) / 2;
         if nums[mid_point] == target {
-             return Some(mid_point)
+            return Some(mid_point);
         }
-        if nums[mid_point] > nums[left_ptr] {
+        let mut is_left_sorted = false;
+        if nums[mid_point] >= nums[left_ptr] {
             is_left_sorted = true;
         }
         if is_left_sorted {
-            if nums[mid_point] > target {
-                if nums[left_ptr] < target {
-                    right_ptr = mid_point - 1;
+            if nums[left_ptr] <= target && nums[mid_point] > target {
+                let right_ptr_check = mid_point.checked_sub(1);
+                if let Some(right_ptr_unwrap) = right_ptr_check {
+                    right_ptr = right_ptr_unwrap
                 } else {
-                    left_ptr = mid_point + 1;
+                    return None;
                 }
             } else {
-                left_ptr = mid_point + 1;
+                left_ptr = mid_point + 1
             }
         } else {
-            if nums[mid_point] < target {
-                if nums[right_ptr] > target {
-                    left_ptr = mid_point + 1;
-                } else {
-                    right_ptr = mid_point - 1;
-                }
+            if nums[right_ptr] >= target && nums[mid_point] < target {
+                left_ptr = mid_point + 1
             } else {
-                right_ptr = mid_point - 1;
+                let right_ptr_check = mid_point.checked_sub(1);
+                if let Some(right_ptr_unwrap) = right_ptr_check {
+                    right_ptr = right_ptr_unwrap
+                } else {
+                    return None;
+                }
             }
         }
     }
