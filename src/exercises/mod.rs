@@ -12,6 +12,7 @@ pub mod longest_unique_substring;
 pub mod lower_bound;
 pub mod max_value;
 pub mod max_window_sum;
+pub mod merge_intervals;
 pub mod merge_sorted;
 pub mod ordered_intersection;
 pub mod parse_integer;

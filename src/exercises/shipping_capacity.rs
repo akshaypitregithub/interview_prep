@@ -12,8 +12,54 @@
 /// No sorting, recursion, floating point, scanning every possible capacity,
 /// built-in search/partition helpers, or calls to earlier exercises.
 pub fn shipping_capacity(weights: &[u32], days: usize) -> Option<u64> {
-    let _ = (weights, days);
-    todo!("Implement minimum shipping capacity")
+    if weights.is_empty() {
+        return Some(0);
+    }
+    if days == 0 {
+        return None;
+    }
+    let mut max_weight: u32 = 0;
+    let mut right_ptr : u64 = 0;
+    for weight in weights {
+        if *weight > max_weight {
+            max_weight = *weight;
+        }
+        right_ptr += *weight as u64;
+    }
+    let mut left_ptr: u64 = max_weight as u64;
+    let mut best_capacity = u64::MAX;
+
+    while left_ptr <= right_ptr {
+        let mid_ptr = left_ptr + (right_ptr - left_ptr) / 2;
+        let mut loop_capacity_days = 0;
+        let mut current_day_weight: u64 = 0;
+        for weight in weights {
+            if loop_capacity_days == 0 && *weight != 0 {
+                loop_capacity_days += 1
+            }
+            if current_day_weight + *weight as u64 > mid_ptr {
+                loop_capacity_days += 1;
+                current_day_weight = 0;
+            }
+            current_day_weight += *weight as u64;
+        }
+
+        if loop_capacity_days > days {
+            left_ptr = mid_ptr + 1;
+        } else {
+            if (mid_ptr) < best_capacity {
+                best_capacity = mid_ptr
+            }
+            let right_ptr_check = mid_ptr.checked_sub(1);
+            if let Some(right_ptr_unwrap) = right_ptr_check {
+                right_ptr = right_ptr_unwrap
+            } else {
+                return Some(0);
+            }
+        }
+    }
+
+    Some(best_capacity)
 }
 
 #[cfg(test)]

@@ -17,7 +17,13 @@ On 2026-09-05, `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`,
 
 ## Active goal
 
-**Session active.** Advanced to G022 minimum shipping capacity on explicit next request (2026-10-04). All 15 new tests compile and fail at the intentional placeholder; 303 earlier tests filtered out. New-file formatting and standalone Clippy pass. Next tiny action: read `finds_minimum_for_multiple_days` in `src/exercises/shipping_capacity.rs`. Earlier implementations and tests preserved.
+**Session active: G023 merge intervals (2026-10-07).** Advanced on explicit next request. All 15 new tests compile and fail at the intentional placeholder; 318 earlier tests filtered out. New-file formatting and standalone Clippy pass. Next tiny action: read `merges_unsorted_overlaps` in `src/exercises/merge_intervals.rs`. Earlier code and tests preserved. G022 entries below are historical; pending explanations do not block advancement.
+
+Latest G022 reasoning bookmark (2026-10-07): learner identified why rearranging packages is forbidden. Greedy optimality still needs justification among legal ordered partitions. Next tiny action: compare ending day one early with the longest fitting prefix and explain whether ending early can leave less work for later days. No code changes or checks.
+
+G022 reasoning follow-up (2026-10-07): learner correctly justified discarding all smaller capacities because they require the same or more days. Monotonicity verified; greedy minimal-day reasoning and remaining correctness/safety/complexity explanations pending. Next tiny action: explain why filling each day as much as possible minimizes the number of days while preserving order. No checks rerun; the attempt-4 formatting result below remains the latest evidence.
+
+**Session active.** G022 attempt 4 reviewed (2026-10-07): all 15 tests and standalone Clippy pass; 303 earlier tests filtered out. Formatting fails on one extra space before the colon at line 22. Explicit-loop requirement now met; no functional correctness defect or demonstrated patchwork found. Reasoning unverified. Next tiny action: run `rustfmt --edition 2024 src/exercises/shipping_capacity.rs`. Implementation and tests preserved. See [review](reviews/G022.md).
 
 G021 advancement evidence: last review passed all 13 tests, file formatting, and standalone Clippy. No correctness defect or demonstrated patchwork found. Learner justified rejecting an overflowing midpoint using the u64 bound on n; the argument for rejecting all larger candidates and other independent reasoning remain pending. Coach clarified the mathematical-square interpretation and asked how the square changes as the nonnegative candidate increases; that follow-up remains unanswered. No G021 checks rerun during advancement. See [review](reviews/G021.md).
 
@@ -29,7 +35,7 @@ G018 advancement evidence: last review passed all 16 tests with no correctness d
 
 | ID | Unit | Deliverable | Status |
 | --- | --- | --- | --- |
-| G022 | Minimum shipping capacity | Smallest capacity to ship in order within a day limit | Unsolved scaffold; 15 tests |
+| G023 | Merge intervals | Sorted union of closed intervals; touching endpoints merge | Unsolved scaffold; 15 tests |
 
 Setup evidence (not rerun on resume): only G006's 13 tests ran; each failed at the intentional placeholder, with 62 earlier tests filtered out. G006 file formatting and standalone Clippy passed. Previous implementations were preserved. The checkpoint paragraphs below are historical.
 
@@ -46,6 +52,8 @@ Learner clarification supersedes the swap recommendation: keep the manual swap a
 G003 setup verification: all 23 earlier tests pass; formatting and Clippy with the documented G001 exception pass. All 13 G003 tests compile and fail at the intentional `todo!` placeholder. No solution supplied.
 
 ## Previous goals
+
+G022 advancement evidence: 15/15 tests and standalone Clippy last passed; one formatting space remained. Monotonicity verified, order constraint identified; greedy optimality and remaining independent reasoning pending. No functional correctness defect or demonstrated patchwork found. See [review](reviews/G022.md). No earlier-exercise checks rerun on advancement.
 
 Record implementation completion separately from unverified learning outcomes. Explicit `next` requests advance even when explanations remain pending.
 
