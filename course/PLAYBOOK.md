@@ -19,7 +19,7 @@ The learner owns the implementation and completion explanations. The coach scaff
 
 ## Stop and resume workflow
 
-Recognize standalone `stop` and `resume` commands case-insensitively, and equivalent explicit requests in context. Mentioning or defining the commands is not invoking them.
+Recognize standalone `stop`, `resume`, and `start` (as an alias for `resume`) commands case-insensitively, and equivalent explicit requests in context. Mentioning or defining the commands is not invoking them.
 
 **Stop:** Stop exercise work promptly. Save a bookmark in `CURRENT_GOAL.md`: current goal ID and file, last observed implementation state, last completed action, blocker if known, and one concrete tiny next action. Mark the learning session paused without changing completion evidence, and record the pause in `course/PROGRESS.md`. Preserve learner code and tests. Do not run checks, review code, advance, give a solution, or ask another learning question. Use already known state, or a brief read of the current file if needed; label unverified state accurately. Finish with a short confirmation and the return bookmark. No deadlines, streaks, guilt, or “one more task.”
 

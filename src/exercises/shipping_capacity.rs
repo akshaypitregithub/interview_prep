@@ -19,7 +19,7 @@ pub fn shipping_capacity(weights: &[u32], days: usize) -> Option<u64> {
         return None;
     }
     let mut max_weight: u32 = 0;
-    let mut right_ptr : u64 = 0;
+    let mut right_ptr: u64 = 0;
     for weight in weights {
         if *weight > max_weight {
             max_weight = *weight;

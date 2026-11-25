@@ -12,8 +12,29 @@
 /// Use an explicit merging loop; no coordinate enumeration, recursion,
 /// or calls to earlier exercises.
 pub fn merge_intervals(intervals: &[(i32, i32)]) -> Vec<(i32, i32)> {
-    let _ = intervals;
-    todo!("Implement merging closed intervals")
+    let mut intervals_vec = intervals.to_vec();
+    intervals_vec.sort_by(|x, y| x.0.cmp(&y.0).then(x.1.cmp(&y.1)));
+    let mut merged_intervals: Vec<(i32, i32)> = Vec::new();
+    let mut current_interval = 0;
+    for interval in &intervals_vec {
+        if !merged_intervals.is_empty() {
+            if merged_intervals[current_interval].1 >= interval.0 {
+                let interval_end = if merged_intervals[current_interval].1 > interval.1 {
+                    merged_intervals[current_interval].1
+                } else {
+                    interval.1
+                };
+                let new_interval = (merged_intervals[current_interval].0, interval_end);
+                merged_intervals[current_interval] = new_interval;
+            } else {
+                merged_intervals.push(*interval);
+                current_interval += 1;
+            }
+        } else {
+            merged_intervals.push(*interval)
+        }
+    }
+    merged_intervals
 }
 
 #[cfg(test)]

@@ -4,13 +4,9 @@ A mastery-based course for senior software engineering interviews, using Rust an
 
 ## Start here
 
-Open **[CURRENT_GOAL.md](CURRENT_GOAL.md)**. It contains the only active assignment, an exact next action, and a place to record where you stopped.
+Open **[CURRENT_GOAL.md](CURRENT_GOAL.md)**. It contains the only active assignment, its scoped test command, an exact next action, and a place to record where you stopped.
 
-```powershell
-cargo test --lib exercises::binary_search::
-```
-
-G018 (binary search) is intentionally unfinished, so its tests initially fail with a `todo!` panic. Your task is to implement it. Say **review** for correctness and Rust feedback; say **next** to set up the next exercise immediately. Pending explanations are saved for later and do not block an explicit request to advance. You do not need to read the whole course first.
+Say **start** or **resume** in any new session to pick up from your saved bookmark. Say **review** for correctness and Rust feedback; say **next** to set up the next exercise immediately. Pending explanations are saved for later and do not block an explicit request to advance. You do not need to read the whole course first.
 
 ## Course materials
 
@@ -40,6 +36,6 @@ Ask for “a syntax hint” or “an algorithm hint.” Coaching should expose t
 | `review` | Critique only the current exercise and run its checks. |
 | `next` | Set up one next exercise and its tests. |
 | `stop` | Save your place and one tiny next action, then pause. |
-| `resume` | Return to that action without a quiz or catch-up work. |
+| `start` / `resume` | Return to that action without a quiz or catch-up work. |
 
 Commands are case-insensitive. You can stop again after the small resumption action; finishing an exercise is not required.

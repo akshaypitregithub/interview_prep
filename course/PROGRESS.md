@@ -17,7 +17,13 @@ On 2026-09-05, `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`,
 
 ## Active goal
 
-**Session active: G023 merge intervals (2026-10-07).** Advanced on explicit next request. All 15 new tests compile and fail at the intentional placeholder; 318 earlier tests filtered out. New-file formatting and standalone Clippy pass. Next tiny action: read `merges_unsorted_overlaps` in `src/exercises/merge_intervals.rs`. Earlier code and tests preserved. G022 entries below are historical; pending explanations do not block advancement.
+**Session active: G024 minimum meeting rooms (2026-11-21).** Advanced on explicit `next` request. All 15 new tests compile and fail at the intentional placeholder; 333 earlier tests filtered out. New-file formatting and standalone Clippy pass. Next tiny action: read `touching_endpoints_share_a_room` in `src/exercises/meeting_rooms.rs`. Earlier code and tests preserved. G023 entries below are historical; pending explanations do not block advancement.
+
+G023 reasoning follow-up (2026-11-21): learner identified that sorting guarantees nondecreasing `start` order (`last.start <= next.start`). Full earlier-interval disjointness link (`prev.end < last.start <= next.start`) and remaining correctness/safety/complexity explanations pending. Next tiny action: explain what `merged_intervals` guarantees about `prev.end` vs. `last.start` and why that rules out overlap with earlier intervals. No code changes or checks rerun; attempt 1 checks remain latest evidence.
+
+**Session active.** G023 attempt 1 reviewed (2026-11-21): all 15 tests, file-only `rustfmt`, and standalone Clippy pass; 318 earlier tests filtered out. No functional correctness defect or demonstrated patchwork found; reasoning unverified (acceptance pending). Optional Rust idiom notes recorded. Next tiny action: explain why comparing each sorted interval's `start` only against the last merged interval's `end` is sufficient. Implementation and tests preserved. See [review](reviews/G023.md).
+
+G023 setup (2026-10-07): Advanced on explicit next request. All 15 new tests compile and fail at the intentional placeholder; 318 earlier tests filtered out. New-file formatting and standalone Clippy pass. Earlier code and tests preserved. G022 entries below are historical; pending explanations do not block advancement.
 
 Latest G022 reasoning bookmark (2026-10-07): learner identified why rearranging packages is forbidden. Greedy optimality still needs justification among legal ordered partitions. Next tiny action: compare ending day one early with the longest fitting prefix and explain whether ending early can leave less work for later days. No code changes or checks.
 
@@ -35,7 +41,7 @@ G018 advancement evidence: last review passed all 16 tests with no correctness d
 
 | ID | Unit | Deliverable | Status |
 | --- | --- | --- | --- |
-| G023 | Merge intervals | Sorted union of closed intervals; touching endpoints merge | Unsolved scaffold; 15 tests |
+| G024 | Minimum meeting rooms | Half-open intervals; touching endpoints share a room | Unsolved scaffold; 15 tests |
 
 Setup evidence (not rerun on resume): only G006's 13 tests ran; each failed at the intentional placeholder, with 62 earlier tests filtered out. G006 file formatting and standalone Clippy passed. Previous implementations were preserved. The checkpoint paragraphs below are historical.
 
@@ -52,6 +58,8 @@ Learner clarification supersedes the swap recommendation: keep the manual swap a
 G003 setup verification: all 23 earlier tests pass; formatting and Clippy with the documented G001 exception pass. All 13 G003 tests compile and fail at the intentional `todo!` placeholder. No solution supplied.
 
 ## Previous goals
+
+G023 advancement evidence: 15/15 tests, file-only `rustfmt`, and standalone Clippy last passed; no functional correctness defect or demonstrated patchwork found. Nondecreasing `start` order from sorting identified; full earlier-interval disjointness invariant and remaining independent reasoning pending. See [review](reviews/G023.md). No earlier-exercise checks rerun on advancement.
 
 G022 advancement evidence: 15/15 tests and standalone Clippy last passed; one formatting space remained. Monotonicity verified, order constraint identified; greedy optimality and remaining independent reasoning pending. No functional correctness defect or demonstrated patchwork found. See [review](reviews/G022.md). No earlier-exercise checks rerun on advancement.
 
