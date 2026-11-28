@@ -17,7 +17,23 @@ On 2026-09-05, `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`,
 
 ## Active goal
 
-**Session active: G024 minimum meeting rooms (2026-11-21).** Advanced on explicit `next` request. All 15 new tests compile and fail at the intentional placeholder; 333 earlier tests filtered out. New-file formatting and standalone Clippy pass. Next tiny action: read `touching_endpoints_share_a_room` in `src/exercises/meeting_rooms.rs`. Earlier code and tests preserved. G023 entries below are historical; pending explanations do not block advancement.
+**Session active: G025 binary tree maximum depth (2026-11-27).** Advanced on explicit `next` request. All 13 new tests compile and fail at the intentional placeholder; 348 earlier tests filtered out. New-file formatting and standalone Clippy pass. Next tiny action: read `TreeNode` and `balanced_complete_tree` in `src/exercises/tree_depth.rs`. Earlier code and tests preserved. G024 entries below are historical; pending explanations do not block advancement.
+
+G024 attempt 2 reviewed (2026-11-27): all 15 tests, file-only `rustfmt`, and standalone Clippy pass; 333 earlier tests filtered out. No functional correctness defect or demonstrated patchwork found. Half-open tie-breaking policy and `O(n log n)` time / `O(n)` auxiliary space complexity verified; arithmetic safety, borrowing, and independent `start < end` prefix recall remain pending. Next tiny action: explain why `x.0.cmp(&y.0)` is safe across `i32::MIN..=i32::MAX` while subtraction fails. Implementation and tests preserved. See [review](reviews/G024.md).
+
+G024 reasoning follow-up 5 (2026-11-27): learner correctly stated `O(n)` auxiliary space (linear in `n`, from the `2n`-event `Vec` and stable-sort scratch memory). Tie-breaking policy and time/space complexity verified; arithmetic safety, borrowing, and `rustfmt` on lines 14–15 remain pending. Next tiny action: run `rustfmt --edition 2024 src/exercises/meeting_rooms.rs` and say **review**. No code edits or checks rerun.
+
+G024 reasoning follow-up 4 (2026-11-27): learner correctly derived `O(n log n)` time complexity (`O(n)` build + `O(n log n)` sort + `O(n)` sweep). Touching-endpoint tie-breaking and time complexity verified; auxiliary space complexity, arithmetic safety, borrowing, and `rustfmt` on lines 14–15 remain pending. Next tiny action: state auxiliary space complexity (and run `rustfmt --edition 2024 src/exercises/meeting_rooms.rs`). No code edits or checks rerun.
+
+G024 reasoning follow-up 3 (2026-11-27): learner enumerated sorted event patterns for valid intervals; coach surfaced the hidden `start < end` contract premise with `[(1, 3), (5, 5)]` -> `[+1, -1, -1, +1]`. Touching-endpoint tie-breaking verified; complexity, arithmetic safety, borrowing, and `rustfmt` on lines 14–15 remain pending. Next tiny action: state time and auxiliary space complexity (and run `rustfmt --edition 2024 src/exercises/meeting_rooms.rs`). No code edits or checks rerun.
+
+G024 reasoning follow-up 2 (2026-11-27): learner noted total sum `0` and that the first event is a start; coach offered `[+1, -1, -1, +1]` to show why a per-meeting ordering guarantee (`start < end`) is needed for every prefix. Touching-endpoint tie-breaking verified; per-prefix `active >= 0` link, progress/termination, arithmetic safety, borrowing, complexity, and `rustfmt` on lines 14–15 remain pending. Next tiny action: explain why every `-1` is preceded by its matching `+1`, or run `rustfmt --edition 2024 src/exercises/meeting_rooms.rs`. No code edits or checks rerun.
+
+G024 reasoning follow-up (2026-11-27): learner correctly justified half-open tie-breaking (`-1` before `+1` at equal timestamps). Touching-endpoint policy verified; `active >= 0` invariant, progress/termination, arithmetic safety, borrowing, complexity, and `rustfmt` on lines 14–15 remain pending. Next tiny action: run `rustfmt --edition 2024 src/exercises/meeting_rooms.rs` or explain why `active` can never drop below `0`. No code edits or checks rerun; attempt 1 results remain latest evidence.
+
+**Session active.** G024 attempt 1 reviewed (2026-11-27): all 15 tests and standalone Clippy pass; 333 earlier tests filtered out. File-only `rustfmt` fails on colon spacing at lines 14–15 (`active :i32`, `peak :i32`). No functional correctness defect on tested inputs or demonstrated patchwork found; static `i32` counter-width observation and optional Rust idiom notes recorded. Reasoning unverified (acceptance pending). Next tiny action: run `rustfmt --edition 2024 src/exercises/meeting_rooms.rs`. Implementation and tests preserved. See [review](reviews/G024.md).
+
+G024 setup (2026-11-21): Advanced on explicit `next` request. All 15 new tests compile and fail at the intentional placeholder; 333 earlier tests filtered out. New-file formatting and standalone Clippy pass. Earlier code and tests preserved. G023 entries below are historical; pending explanations do not block advancement.
 
 G023 reasoning follow-up (2026-11-21): learner identified that sorting guarantees nondecreasing `start` order (`last.start <= next.start`). Full earlier-interval disjointness link (`prev.end < last.start <= next.start`) and remaining correctness/safety/complexity explanations pending. Next tiny action: explain what `merged_intervals` guarantees about `prev.end` vs. `last.start` and why that rules out overlap with earlier intervals. No code changes or checks rerun; attempt 1 checks remain latest evidence.
 
@@ -41,7 +57,7 @@ G018 advancement evidence: last review passed all 16 tests with no correctness d
 
 | ID | Unit | Deliverable | Status |
 | --- | --- | --- | --- |
-| G024 | Minimum meeting rooms | Half-open intervals; touching endpoints share a room | Unsolved scaffold; 15 tests |
+| G025 | Binary tree maximum depth | Owned `Option<Box<TreeNode>>` borrowed as `Option<&TreeNode>`; node-count depth | Unsolved scaffold; 13 tests |
 
 Setup evidence (not rerun on resume): only G006's 13 tests ran; each failed at the intentional placeholder, with 62 earlier tests filtered out. G006 file formatting and standalone Clippy passed. Previous implementations were preserved. The checkpoint paragraphs below are historical.
 
@@ -58,6 +74,8 @@ Learner clarification supersedes the swap recommendation: keep the manual swap a
 G003 setup verification: all 23 earlier tests pass; formatting and Clippy with the documented G001 exception pass. All 13 G003 tests compile and fail at the intentional `todo!` placeholder. No solution supplied.
 
 ## Previous goals
+
+G024 advancement evidence: 15/15 tests, file-only `rustfmt`, and standalone Clippy last passed; no functional correctness defect or demonstrated patchwork found. Half-open touching-endpoint tie-breaking, `O(n log n)` time, and `O(n)` auxiliary space verified; arithmetic safety, borrowing, and independent `start < end` prefix recall pending. See [review](reviews/G024.md). No earlier-exercise checks rerun on advancement.
 
 G023 advancement evidence: 15/15 tests, file-only `rustfmt`, and standalone Clippy last passed; no functional correctness defect or demonstrated patchwork found. Nondecreasing `start` order from sorting identified; full earlier-interval disjointness invariant and remaining independent reasoning pending. See [review](reviews/G023.md). No earlier-exercise checks rerun on advancement.
 

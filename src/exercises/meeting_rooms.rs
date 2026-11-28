@@ -11,8 +11,21 @@
 /// collections are allowed. Use an explicit loop for the sweep/counting pass;
 /// no coordinate enumeration, recursion, or calls to earlier exercises.
 pub fn min_meeting_rooms(meetings: &[(i32, i32)]) -> usize {
-    let _ = meetings;
-    todo!("Implement minimum meeting rooms")
+    let mut active: i32 = 0;
+    let mut peak: i32 = 0;
+    let mut nested_interval_tuple = Vec::new();
+    meetings.iter().for_each(|meeting| {
+        nested_interval_tuple.push((meeting.0, 1));
+        nested_interval_tuple.push((meeting.1, -1))
+    });
+    nested_interval_tuple.sort_by(|x, y| x.0.cmp(&y.0).then(x.1.cmp(&y.1)));
+    for meeting in nested_interval_tuple {
+        active += meeting.1;
+        if active > peak {
+            peak = active;
+        }
+    }
+    peak as usize
 }
 
 #[cfg(test)]
